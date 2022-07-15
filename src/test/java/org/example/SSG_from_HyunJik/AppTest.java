@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
 
@@ -48,4 +49,18 @@ public class AppTest {
         Util.mkdir("test_data");
         Util.saveToFile("test_data/1.json", "내용");
     }
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_종료() {
+        String rs = AppTestRunner.run("""
+                종료
+                """);
+
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+    }
+
+
+
+
+
 }
