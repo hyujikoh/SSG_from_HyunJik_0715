@@ -19,6 +19,13 @@ public class App {
                 case "종료":
                     break outer;
 
+                case "등록":
+                    System.out.println("명언 : ");
+                    String content = sc.nextLine();
+                    System.out.println("작가 : ");
+                    String author = sc.nextLine();
+                    break outer;
+
             }
 
         }

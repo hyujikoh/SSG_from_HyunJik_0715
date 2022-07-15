@@ -50,13 +50,27 @@ public class AppTest {
         Util.saveToFile("test_data/1.json", "내용");
     }
     @Test
-    public void 프로그램_시작시_타이틀_출력_그리고_종료() {
+    public void 프로그램_시작시_타이틀_출력_그리고_종료_1단계() {
         String rs = AppTestRunner.run("""
                 종료
                 """);
 
         assertTrue(rs.contains("== 명언 SSG =="));
         assertTrue(rs.contains("명령)"));
+    }
+    @Test
+    public void 등록시_내용_작가_정보입력_2단계() {
+        String rs = AppTestRunner.run("""
+                등록
+                이순신명언
+                이순신
+                종료
+                """);
+
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
     }
 
 
