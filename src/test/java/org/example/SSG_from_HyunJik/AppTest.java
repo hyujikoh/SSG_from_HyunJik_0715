@@ -118,6 +118,33 @@ public class AppTest {
 
 
     }
+    @Test
+    public void 명언삭제_5단계() {
+        /*번호 증가까지 구현*/
+        String rs = AppTestRunner.run("""
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                등록
+                나폴레옹명언
+                나폴레옹
+                삭제?id=2
+                목록
+                종료
+                """);
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+        assertTrue(rs.contains("1번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 삭제되었습니다."));
+        assertTrue(rs.contains("번호 / 작가 / 명언"));
+        assertTrue(rs.contains("----------------------"));
+        assertTrue(rs.contains("1 / 작자미상 / 과거에 집착하지 마라."));
+
+
+    }
 
 
 
