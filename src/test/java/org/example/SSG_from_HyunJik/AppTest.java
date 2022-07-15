@@ -72,6 +72,25 @@ public class AppTest {
         assertTrue(rs.contains("명언 : "));
         assertTrue(rs.contains("작가 : "));
     }
+    @Test
+    public void 등록시_생성된_명언번호_노출_3단계() {
+        String rs = AppTestRunner.run("""
+                등록
+                이순신명언
+                이순신
+                등록
+                나폴레옹명언
+                나폴레옹
+                종료
+                """);
+
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+        assertTrue(rs.contains("1번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 등록되었습니다."));
+    }
 
 
 

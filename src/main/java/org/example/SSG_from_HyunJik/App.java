@@ -20,11 +20,13 @@ public class App {
                     break outer;
 
                 case "등록":
+                    id++;
                     System.out.println("명언 : ");
                     String content = sc.nextLine();
                     System.out.println("작가 : ");
                     String author = sc.nextLine();
-                    break outer;
+                    System.out.println(id+"번 명언이 등록되었습니다.");
+                    break ;
 
             }
 
