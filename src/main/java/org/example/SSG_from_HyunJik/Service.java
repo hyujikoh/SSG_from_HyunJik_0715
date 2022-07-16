@@ -1,12 +1,21 @@
 package org.example.SSG_from_HyunJik;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Service {
+    List<WiseSaying> result = new ArrayList<>();
     private final Dao dao;
-    private Scanner sc;
-    public Service(Dao dao,Scanner sc){
-        this.dao = dao;
-        this.sc = sc;
+    public Service(){
+        dao = new Dao();
+    }
+
+    public WiseSaying create(WiseSaying wiseSaying){
+        dao.create(wiseSaying);
+        return wiseSaying;
+    }
+    public List allList(){
+        return dao.alllist();
     }
 }

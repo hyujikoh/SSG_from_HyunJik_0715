@@ -12,6 +12,7 @@ public class Controller {
     List<WiseSaying> result = new ArrayList<>();
     public Controller(Scanner sc){
         this.sc = sc;
+        service = new Service();
     }
     public int findByid(int id){
         int idx=-1;
@@ -32,13 +33,14 @@ public class Controller {
         String content = sc.nextLine();
         System.out.println("작가 : ");
         String author = sc.nextLine();
-        WiseSaying wiseSaying= new WiseSaying(id,author,content);
-        result.add(wiseSaying);
-        System.out.println(id+"번 명언이 등록되었습니다.");
+        WiseSaying wiseSaying1= new WiseSaying(id,author,content);
+        WiseSaying wiseSaying = service.create(wiseSaying1);
+        System.out.println(wiseSaying.id+"번 명언이 등록되었습니다.");
     }
     public void allList(Rq rq){
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
+        result = service.allList();
         for(int i=0; i <result.size();i++){
             System.out.println(result.get(i).id+" / "+result.get(i).author+" / "+result.get(i).content);
         }
