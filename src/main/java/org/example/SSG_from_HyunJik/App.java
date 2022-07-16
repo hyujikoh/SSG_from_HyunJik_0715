@@ -11,6 +11,7 @@ public class App {
         this.sc = sc;
     }
     int id=0;
+    String error = "잘못된 에러 정보 입력";
     public void run() {
         System.out.println("== 명언 SSG ==");
 
@@ -42,27 +43,53 @@ public class App {
                     }
                     break ;
                 case "삭제":
+
                     int id = rq.getIntParam("id", 0);
                     System.out.println(id);
-                    if(id==0){
-                        System.out.println("없는 정보");
-                        break;
+                    if(findByid(id)==-1){
+                        System.out.println(error);
+                        break ;
                     }
-                    WiseSaying result_index = result.get(id-1);
-                    result.remove(result_index);
+                    WiseSaying delete_element = result.get(findByid(id));
+                    result.remove(delete_element);
                     System.out.println(id+"번 명언이 삭제되었습니다.");
                     break;
+
+
                 case "수정":
-                    System.out.println("번호 / 작가 / 명언");
-                    System.out.println("----------------------");
-                    for(int i=0; i <result.size();i++){
-                        System.out.println(result.get(i).id+" / "+result.get(i).author+" / "+result.get(i).content);
+
+                    int update_id = rq.getIntParam("id", 0);
+                    if(findByid(update_id)==-1){
+                        System.out.println(error);
+                        break ;
                     }
+                    WiseSaying update_element = result.get(findByid(update_id));
+                    System.out.println("명언(기존) : "+update_element.content);
+                    String update_content = sc.nextLine();
+                    System.out.println("작가(기존) : "+update_element.author);
+                    String update_autnor = sc.nextLine();
+                    update_element.content =update_content;
+                    update_element.author=update_autnor;
+                    System.out.println(update_id+"번 명언이 수정되었습니다.");
                     break ;
 
 
             }
 
         }
+    }
+    public int findByid(int id){
+        String error = "잘못된 에러 정보 입력";
+        int idx=-1;
+        for(int i = 0 ; i<result.size();i++){
+            if(result.get(i).id==id){
+                idx = i;
+                break;
+            }
+            if(i+1==result.size()){
+                break;
+            }
+        }
+        return idx;
     }
 }

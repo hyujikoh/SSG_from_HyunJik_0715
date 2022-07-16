@@ -74,7 +74,7 @@ public class AppTest {
     }
     @Test
     public void 등록시_생성된_명언번호_노출_3단계() {
-        /*번호 증가까지 구현*/
+
         String rs = AppTestRunner.run("""
                 등록
                 이순신명언
@@ -94,7 +94,7 @@ public class AppTest {
     }
     @Test
     public void 지금까지_등록한_정보_목록출력_4단계() {
-        /*번호 증가까지 구현*/
+
         String rs = AppTestRunner.run("""
                 등록
                 과거에 집착하지 마라.
@@ -120,7 +120,7 @@ public class AppTest {
     }
     @Test
     public void 명언삭제_5단계() {
-        /*번호 증가까지 구현*/
+
         String rs = AppTestRunner.run("""
                 등록
                 과거에 집착하지 마라.
@@ -142,8 +142,60 @@ public class AppTest {
         assertTrue(rs.contains("번호 / 작가 / 명언"));
         assertTrue(rs.contains("----------------------"));
         assertTrue(rs.contains("1 / 작자미상 / 과거에 집착하지 마라."));
+    }
+    @Test
+    public void 명언삭제시_잘못된id정보입력시_6단계() {
 
-
+        String rs = AppTestRunner.run("""
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                등록
+                나폴레옹명언
+                나폴레옹
+                삭제?id=1243
+                목록
+                종료
+                """);
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+        assertTrue(rs.contains("1번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("잘못된 에러 정보 입력"));
+        assertTrue(rs.contains("번호 / 작가 / 명언"));
+        assertTrue(rs.contains("----------------------"));
+        assertTrue(rs.contains("1 / 작자미상 / 과거에 집착하지 마라."));
+    }
+    @Test
+    public void 명언수정_7단계() {
+        /*번호 증가까지 구현*/
+        String rs = AppTestRunner.run("""
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                등록
+                나폴레옹명언
+                나폴레옹
+                삭제?id=2
+                수정?id=1
+                현재와 자신을 사랑하라.
+                홍길동
+                목록
+                종료
+                """);
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+        assertTrue(rs.contains("1번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 등록되었습니다."));
+        assertTrue(rs.contains("2번 명언이 삭제되었습니다."));
+        assertTrue(rs.contains("1번 명언이 수정되었습니다."));
+        assertTrue(rs.contains("번호 / 작가 / 명언"));
+        assertTrue(rs.contains("----------------------"));
+        assertTrue(rs.contains("1 / 홍길동 / 현재와 자신을 사랑하라."));
     }
 
 
