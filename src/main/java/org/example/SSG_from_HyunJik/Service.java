@@ -18,4 +18,17 @@ public class Service {
     public List allList(){
         return dao.alllist();
     }
+    public void update(int id,String  author, String content){
+        dao.update(id,author,content);
+    }
+    public void delete(int id){
+        dao.delete(id);
+    }
+
+    public int findByid(int id) {
+        return dao.findByid(id);
+    }
+    public WiseSaying get(int id) {
+        return dao.get(id);
+    }
 }

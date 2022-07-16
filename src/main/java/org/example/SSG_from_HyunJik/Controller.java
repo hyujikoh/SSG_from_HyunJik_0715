@@ -51,20 +51,20 @@ public class Controller {
 
     public void update(Rq rq){
         try{
-            int update_id = rq.getIntParam("id", 0);
-            if(findByid(update_id)==-1){
+            int id = rq.getIntParam("id", 0);
+            int update_id = service.findByid(id);
+            if(update_id==-1){
                 throw new Exception();
-
             }
-            WiseSaying update_element = result.get(findByid(update_id));
+
+            WiseSaying update_element = service.get(update_id);
+
             System.out.println("명언(기존) : "+update_element.content);
             String update_content = sc.nextLine();
             System.out.println("작가(기존) : "+update_element.author);
-            String update_autnor = sc.nextLine();
-            update_element.content =update_content;
-            update_element.author=update_autnor;
-
-            System.out.println(update_id+"번 명언이 수정되었습니다.");
+            String update_author = sc.nextLine();
+            service.update(update_id,update_author,update_content);
+            System.out.println(id+"번 명언이 수정되었습니다.");
         }
         catch (Exception e){
             System.out.println(error);
@@ -73,13 +73,13 @@ public class Controller {
     }
     public void delete(Rq rq){
         try{
-            int delete_id = rq.getIntParam("id", 0);
-            if(findByid(delete_id)==-1){
+            int id = rq.getIntParam("id", 0);
+            int delete_id = service.findByid(id);
+            if(delete_id==-1){
                 throw new Exception();
             }
-            WiseSaying delete_element = result.get(findByid(delete_id));
-            result.remove(delete_element);
-            System.out.println(delete_id+"번 명언이 삭제되었습니다.");
+            service.delete(delete_id);
+            System.out.println(id+"번 명언이 삭제되었습니다.");
         }
         catch (Exception e ){
             System.out.println(error);
