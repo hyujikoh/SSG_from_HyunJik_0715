@@ -1,4 +1,4 @@
-package org.example.SSG_from_HyunJik;
+package org.example.SSG_from_HyunJik.util;
 
 import java.util.HashMap;
 import java.util.Map;

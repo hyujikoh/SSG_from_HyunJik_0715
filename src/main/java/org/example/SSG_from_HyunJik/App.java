@@ -1,5 +1,8 @@
 package org.example.SSG_from_HyunJik;
 
+import org.example.SSG_from_HyunJik.model.WiseSaying;
+import org.example.SSG_from_HyunJik.util.Rq;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,8 +14,6 @@ public class App {
     public App(Scanner sc) {
         this.sc = sc;
     }
-    int id=0;
-    String error = "잘못된 에러 정보 입력";
     public void run() {
         System.out.println("== 명언 SSG ==");
         controller = new Controller(sc);

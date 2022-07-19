@@ -1,4 +1,4 @@
-package org.example.SSG_from_HyunJik;
+package org.example.SSG_from_HyunJik.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;

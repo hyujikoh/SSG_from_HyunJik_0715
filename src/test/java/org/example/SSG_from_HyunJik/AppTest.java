@@ -1,5 +1,6 @@
 package org.example.SSG_from_HyunJik;
 
+import org.example.SSG_from_HyunJik.util.Util;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -113,8 +114,8 @@ public class AppTest {
         assertTrue(rs.contains("2번 명언이 등록되었습니다."));
         assertTrue(rs.contains("번호 / 작가 / 명언"));
         assertTrue(rs.contains("----------------------"));
-        assertTrue(rs.contains("1 / 작자미상 / 과거에 집착하지 마라."));
-        assertTrue(rs.contains("2 / 나폴레옹 / 나폴레옹명언"));
+        assertTrue(rs.contains("2 / 작자미상 / 과거에 집착하지 마라."));
+        assertTrue(rs.contains("1 / 나폴레옹 / 나폴레옹명언"));
 
 
     }
